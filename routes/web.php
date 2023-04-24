@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Student;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,9 +30,22 @@ return '<h1> Welcome Here </h1>';
 });
 
 Route::get('/student',function (){
-return \App\Models\Student::first();
+return Student::first();
 });
 
 Route::get('/students',function (){
-return \App\Models\Student::all();
+return Student::all();
+});
+
+//Route::get('/student/{student}',function ($id){
+//return \App\Models\Student::Where('id',$id)->first();
+//});
+Route::get('/student/{student}',function (Student $student){
+return $student;
+});
+
+
+
+Route::get('/user/{user}' ,function (User $user ){
+    return $user;
 });
