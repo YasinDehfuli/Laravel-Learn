@@ -30,7 +30,7 @@ return '<h1> Welcome Here </h1>';
 });
 
 Route::get('/student',function (){
-return Student::first();
+return Student::inRandomOrder()->first();
 });
 
 Route::get('/students',function (){
