@@ -49,3 +49,7 @@ return $student;
 Route::get('/user/{user}' ,function (User $user ){
     return $user;
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
