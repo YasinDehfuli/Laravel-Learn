@@ -9,6 +9,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+{{--    <?php echo ?>                                       --}}
+{{--    =                                                   --}}
+{{--    {{}}                                                --}}
+
     <!-- Fonts -->
 
     <!-- Scripts -->
@@ -28,7 +32,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        @yield('menu')
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -70,7 +74,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4 bg-danger">
             @yield('content')
         </main>
     </div>
