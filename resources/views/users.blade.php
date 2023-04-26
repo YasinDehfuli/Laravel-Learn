@@ -41,7 +41,7 @@
                 </tr>
             @endforeach
         </table>
-        <div class="d-block m-auto">
+        <div class="Pagination mt-4 ">
             {{$users->links()}}
         </div>
 
