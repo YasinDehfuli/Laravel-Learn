@@ -36,7 +36,7 @@
                         {{$user->mobile}}
                     </td>
                     <td>
-                        -
+                        <a href="{{route('user.delete',$user)}}" class="btn btn-danger">X</a>
                     </td>
                 </tr>
             @endforeach
