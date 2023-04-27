@@ -5,7 +5,12 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import "vazirmatn/Vazirmatn-font-face.css";
+@import "vazirmatn/Vazirmatn-Variable-font-face.css";
 
+*{
+    font-family: 'vazirmatn', serif;
+}
 body{
     direction: rtl;
 }

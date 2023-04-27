@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1>Users</h1>
+        <h1>
+            Users
+            <a href="{{route('user.create')}}" class="btn btn-primary float-start">
+                Add User
+            </a>
+        </h1>
 
         <table class="table table-striped table-bordered table-hover text-center">
             <tr>
@@ -36,7 +41,7 @@
                         {{$user->mobile}}
                     </td>
                     <td>
-                        <a href="{{route('user.delete',$user)}}" class="btn btn-danger">X</a>
+                        <a href="{{route('user.delete',$user->id)}}" class="btn btn-danger">X</a>
                     </td>
                 </tr>
             @endforeach
