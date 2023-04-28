@@ -4,7 +4,7 @@
         <h1>
             Users
             <a href="{{route('user.create')}}" class="btn btn-primary float-start">
-                Add User
+                New User
             </a>
         </h1>
 
