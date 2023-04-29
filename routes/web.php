@@ -51,6 +51,7 @@ Auth::routes(['register'=>false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/users',[\App\Http\Controllers\UserController::class,'index'])->name('user.index');
 Route::get('/user/new',[\App\Http\Controllers\UserController::class,'create'])->name('user.create');
+Route::post('/user/store',[\App\Http\Controllers\UserController::class,'store'])->name('user.store');
 Route::get('/user/delete/{user}',[\App\Http\Controllers\UserController::class,'destroy'])->name('user.delete');
 
 Route::get('/user/{user}' ,function (User $user ){
