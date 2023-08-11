@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserSaveRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(UserSaveRequest $request)
     {
         //
     $user = new User();
@@ -56,14 +57,22 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        return view('user',compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(UserSaveRequest $request, User $user)
     {
         //
+        $user = new User();
+        $user->name = $request->name;
+        $user->email=$request->email;
+        $user->mobile=$request->mobile;
+        $user->password=bcrypt($request->password);
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**
