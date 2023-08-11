@@ -8,6 +8,19 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function CreateOrUpdate(User $user, UserSaveRequest $request)
+    {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->password);
+        }
+        $user->mobile = $request->mobile;
+        $user->save();
+        return $user;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -15,7 +28,7 @@ class UserController extends Controller
     {
         //
         $users = User::paginate(30);
-        return view('users',compact('users'));
+        return view('users', compact('users'));
     }
 
     /**
@@ -24,7 +37,7 @@ class UserController extends Controller
     public function create()
     {
         //
-    return view('user');
+        return view('user');
     }
 
     /**
@@ -33,13 +46,9 @@ class UserController extends Controller
     public function store(UserSaveRequest $request)
     {
         //
-    $user = new User();
-    $user->name = $request->name;
-    $user->email=$request->email;
-    $user->mobile=$request->mobile;
-    $user->password=bcrypt($request->password);
-    $user->save();
-    return redirect()->route('user.index');
+        $user = new User();
+        $this->CreateOrUpdate($user, $request);
+        return redirect()->route('user.index')->with(['message' => 'User inserted']);
 
     }
 
@@ -57,7 +66,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
-        return view('user',compact('user'));
+        return view('user', compact('user'));
     }
 
     /**
@@ -67,12 +76,8 @@ class UserController extends Controller
     {
         //
         $user = new User();
-        $user->name = $request->name;
-        $user->email=$request->email;
-        $user->mobile=$request->mobile;
-        $user->password=bcrypt($request->password);
-        $user->save();
-        return redirect()->route('user.index');
+        $this->CreateOrUpdate($user, $request);
+        return redirect()->route('user.index')->with(['message' => 'User Updated']);
     }
 
     /**
@@ -81,7 +86,8 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $name = $user->name;
         $user->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with(['message' => 'User "' . $name . '" deleted']);
     }
 }
