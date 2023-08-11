@@ -4,7 +4,7 @@
         <h1>
             User
         </h1>
-
+            @include('component.err')
     </div>
     <div class="container">
         <form class="" method="post" @if(isset($user)) action="{{route('user.update',$user->id)}}" @else action="{{route('user.store')}}" @endif>
@@ -50,7 +50,7 @@
                         <label for="password_confirm">
                             {{__('Confirm Password')}}
                         </label>
-                        <input name="password_confirm" type="password" class="form-control @error('password_confirm') is-invalid @enderror" placeholder="{{__('Confirm Password')}}" value="{{old('password_confirm',$user->password_confirm??null)}}"  />
+                        <input name="password_confirmation" type="password" class="form-control @error('password_confirm') is-invalid @enderror" placeholder="{{__('Confirm Password')}}" value="{{old('password_confirm',$user->password_confirm??null)}}"  />
                     </div>
                 </div>
                 <div class="col-md-12">

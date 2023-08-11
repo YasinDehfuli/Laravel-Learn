@@ -7,6 +7,7 @@
                 New User
             </a>
         </h1>
+        @include('component.err')
 
         <table class="table table-striped table-bordered table-hover text-center">
             <tr>
