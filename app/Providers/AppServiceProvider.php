@@ -14,12 +14,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        if ($this->app->isLocal()) {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
-        // ...
     }
-
 
     /**
      * Bootstrap any application services.
