@@ -41,7 +41,8 @@
                         {{$user->mobile}}
                     </td>
                     <td>
-                        <a href="{{route('user.delete',$user->id)}}" class="btn btn-danger">X</a>
+                        <a href="{{route('user.delete',$user->id)}}" class="btn btn-danger ms-2">X</a>
+                        <a href="{{route('user.edit',$user->id)}}" class="btn btn-secondary "><i class="fa fa-edit"></i></a>
                     </td>
                 </tr>
             @endforeach
